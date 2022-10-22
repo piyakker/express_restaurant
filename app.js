@@ -19,10 +19,11 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
   res.render('show', { restaurant: restaurant })
 })
 
+//想請問助教，querystring裡空白格會變成 + ，該如何消去
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.toLowerCase().trim()
   const restaurants = restaurantList.results.filter(restaurant => restaurant.name.toLowerCase().includes(keyword) ||
-  restaurant.category.includes(keyword))
+    restaurant.category.includes(keyword))
   res.render('index', { restaurants: restaurants, keyword: keyword })
 })
 
